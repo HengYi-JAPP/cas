@@ -1,0 +1,261 @@
+@charset "utf-8";
+* {
+    box-sizing: border-box;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    font-weight: normal;
+}
+
+body, html {
+    padding: 0;
+    margin: 0;
+    font: 14px/2 'Microsoft YaHei';
+    color: #666;
+}
+
+img {
+    border: none;
+}
+
+input {
+    padding: 0;
+    border: none;
+    font-family: 'Microsoft YaHei';
+    vertical-align: middle;
+}
+
+/*通用*/
+.external-wrap, .prospect-wrap, .prospect-wrap .prospect, #slide {
+    width: 100%;
+    height: 768px;
+}
+
+/*wrap*/
+.external-wrap {
+    position: relative;
+}
+
+/*header*/
+.header {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    text-align: center
+}
+
+.header .logo {
+    width: 1200px;
+    margin: auto;
+}
+
+.header .l-img, .header .l-text {
+    float: left
+}
+
+.header .l-text {
+    margin-left: 20px;
+    display: none;
+}
+
+.header .t-name {
+    font-size: 24px;
+    color: #333;
+    line-height: 30px;
+}
+
+.header .t-website {
+    letter-spacing: 0.8px;
+    line-height: 20px;
+}
+
+/*contetn*/
+.prospect-wrap {
+    position: relative;
+    z-index: 6;
+}
+
+.login-wrap .prospect {
+    background: url(prospect.png) no-repeat center center;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+/*slide*/
+#slide {
+    position: absolute;
+    z-index: 1;
+}
+
+/*login*/
+.Interface .title i, .Interface .key {
+    background: url(icons.png) no-repeat 0 0;
+}
+
+.l-window {
+    width: 1000px;
+    height: 369px;
+    position: absolute;
+    top: 230px;
+    left: 50%;
+    z-index: 99;
+    margin-left: -500px;
+}
+
+.l-window .Interface {
+    background: url(loginbg.png) no-repeat 0 0;
+    width: 320px;
+    height: 369px;
+    float: right;
+    text-align: center
+}
+
+.password {
+    top: 180px;
+}
+
+.password .Interface {
+    background: url(loginbg2.png) no-repeat 0 0;
+    height: 470px;
+}
+
+.Interface .title {
+    height: 80px;
+    color: #fff;
+    line-height: 80px;
+    font-size: 24px;
+    padding-left: 30px;
+    text-align: left;
+}
+
+.Interface .title i {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    width: 30px;
+    height: 30px;
+    vertical-align: -8px;
+    *vertical-align: 0;
+    *margin-right: 10px;
+}
+
+.Interface form {
+    width: 85%;
+    margin: 20px auto;
+    color: #999;
+}
+
+.Interface p.frame {
+    position: relative;
+    z-index: 2;
+    text-align: left
+}
+
+.Interface p.frame label {
+    position: absolute;
+    top: 0;
+    left: 40px;
+    z-index: 0;;
+    line-height: 36px
+}
+
+.Interface .key {
+    display: block;
+    width: 100%;
+    height: 36px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    color: #666;
+    padding-left: 40px;
+    position: relative;
+    z-index: 2;
+    background-color: transparent;
+}
+
+.Interface span.key {
+    color: #999;
+}
+
+.Interface .chbox {
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+.Interface p.chbox label {
+    position: static;
+    margin-left: 10px;
+}
+
+.Interface .max-username {
+    background-position: 0 -70px
+}
+
+.Interface .max-password {
+    background-position: 0 -142px
+}
+
+.Interface .login-entry {
+    margin-top: 20px;
+}
+
+.Interface .login-entry button {
+    border: none;
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+}
+
+.Interface .login-entry .login-btn span {
+    display: block;
+    background: url(bt-b.png) no-repeat center top;
+    height: 60px;
+    line-height: 48px;
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+}
+
+.Interface .login-entry .btn span:hover {
+    background-image: url(btn-y.png);
+    color: #fff;
+}
+
+.Interface .login-entry .reset-btn span {
+    display: block;
+    background: url(bt-t.png) no-repeat center top;
+    height: 60px;
+    line-height: 48px;
+    text-align: center;
+    font-size: 20px;
+    color: #1c9ae2;
+}
+
+/*footer*/
+.footer {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 9
+}
+
+.footer .copyright {
+    width: 1200px;
+    margin: auto;
+    text-align: center;
+    font-size: 12px;
+}
+
+.footer .copyright span {
+    margin-left: 20px
+}
+
+.footer .pir {
+    margin-top: 10px;
+}

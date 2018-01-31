@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:ldap="http://www.springframework.org/schema/ldap"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/ldap http://www.springframework.org/schema/ldap/spring-ldap.xsd">
+
+    <context:component-scan base-package="com.hengyi.cas.core.util,com.hengyi.cas.core.domain.repository"/>
+
+    <ldap:context-source id="hyContextSource"
+                         password="123456"
+                         url="ldap://192.168.0.133:389"
+                         username="cn=weixin,cn=users,dc=hengyi,dc=com"
+                         base="dc=hengyi,dc=com">
+        <ldap:pooling max-active="10"/>
+    </ldap:context-source>
+    <ldap:ldap-template id="hyLdapTemplate" context-source-ref="hyContextSource"/>
+</beans>

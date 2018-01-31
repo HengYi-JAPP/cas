@@ -1,0 +1,20 @@
+<cas:serviceResponse xmlns:cas='http://www.yale.edu/tp/cas'>
+    <cas:authenticationSuccess>
+        <cas:user th:utext="${principal.id}"/>
+        <cas:proxyGrantingTicket th:if="${pgtIou}" th:utext="${pgtIou}"/>
+        <cas:proxies th:if="${not #lists.isEmpty(chainedAuthentications)}">
+            <cas:proxy th:each="proxy : ${chainedAuthentications}" th:utext="${proxy.principal.id}"/>
+        </cas:proxies>
+        <cas:attributes th:if="${not #lists.isEmpty(formattedAttributes)}">
+            <div th:each="attr : ${formattedAttributes}" th:remove="tag">
+                <div th:utext="${attr}" th:remove="tag"/>
+            </div>
+
+            <div th:if="${not #lists.isEmpty(assertion.chainedAuthentications[#lists.size(assertion.chainedAuthentications)-1].principal.attributes)}" th:remove="tag">
+                <div th:each="attr : ${assertion.chainedAuthentications[#lists.size(assertion.chainedAuthentications)-1].principal.attributes}" th:remove="tag">
+                    <div th:utext="${'<cas:'+attr.key+'>'+attr.value+'</cas:'+attr.key+'>'}" th:remove="tag"/>
+                </div>
+            </div>
+        </cas:attributes>
+    </cas:authenticationSuccess>
+</cas:serviceResponse>

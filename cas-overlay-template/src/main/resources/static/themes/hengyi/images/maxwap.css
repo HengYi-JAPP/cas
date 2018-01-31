@@ -1,0 +1,282 @@
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    font-size: 1.5rem;
+    line-height: 2em;
+    width: 100%;
+}
+
+input {
+    border-radius: 0
+}
+
+input {
+}
+
+/*header*/
+.header {
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+}
+
+.header .logo {
+    text-align: center;
+}
+
+.header .l-img, .header .l-text {
+    display: inline-block;
+    vertical-align: top
+}
+
+.header .l-img {
+    width: 14.8rem;
+    height: 4rem;
+    background: url(logo.png) no-repeat;
+    background-size: cover;
+}
+
+.header .l-img img {
+    display: none
+}
+
+.header .l-text {
+    text-align: left;
+    line-height: 2rem;
+    padding-top: 0.7rem;
+    padding-left: 1rem;
+    display: none;
+}
+
+.header .t-name {
+    font-size: 2.5rem;
+    color: #333
+}
+
+.header .t-website {
+    font-size: 1rem;
+    letter-spacing: 0.4rem;
+    color: #999
+}
+
+/*contetn*/
+.login-wrap {
+    position: relative;
+}
+
+.prospect-wrap {
+    position: relative;
+    z-index: 3;
+    height: 56rem;
+    overflow: hidden;
+}
+
+.password-wrap {
+    height: 64rem;
+}
+
+/*slide*/
+#slide {
+    height: 100%;
+    overflow: hidden;
+}
+
+#slide .focusR {
+    display: none
+}
+
+.prospect-wrap .prospect {
+    width: 100%;
+    height: 100%;
+    background: url(prospectBG.png) no-repeat center bottom;
+    background-size: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+/*login*/
+
+.l-window {
+    width: 100%;;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 9;
+    transform: translate(-50%, -50%);
+}
+
+.l-window .Interface {
+    width: 80%;
+    margin: auto;
+    background: #fff;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.l-window .Interface:after {
+    display: block;
+    content: '';
+    background: #648da7;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 3rem;
+    left: 0;
+    z-index: -1;
+    transform: scale(0.7, 0.7);
+    box-shadow: 0 2rem 4rem #273c53;
+}
+
+.Interface .title {
+    line-height: 7rem;
+    height: 7rem;
+    background: #1c9ae2;
+    font-size: 2rem;
+    color: #fff;
+    text-indent: 1rem;
+    font-weight: bold;
+}
+
+.Interface .title i {
+    background: url(icons.png) no-repeat 0 0;
+    background-size: 2.4rem;
+    padding: 1.2rem;
+    font-size: 0;
+    vertical-align: middle;
+    margin: auto 1rem;
+}
+
+.Interface form {
+    padding-top: 2rem;
+}
+
+.Interface p.frame {
+    position: relative;
+    z-index: 3;
+    width: 85%;
+    margin: auto;
+    margin-bottom: 1.5rem;
+    font-size: 0
+}
+
+.Interface p.frame .key ~ label {
+    position: absolute;
+    top: 0;
+    left: 4rem;
+    z-index: -1;
+    line-height: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    color: #999;
+}
+
+.Interface .key {
+    display: block;
+    line-height: 3rem;
+    height: 3rem;
+    width: 100%;
+    text-indent: 1rem;
+    font-size: 1.5rem;
+    color: #666;;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background: url(icons.png) no-repeat 0 0;
+    background-size: 3rem;
+    padding-left: 3rem;
+}
+
+.Interface span.key {
+    color: #999;
+}
+
+.Interface p.chbox {
+    padding-top: 1rem;
+    margin-bottom: 0
+}
+
+.Interface .chbox label {
+    font-size: 1.5rem;
+    vertical-align: top;
+    line-height: 1rem;
+    color: #999;
+}
+
+.Interface .chbox input {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 1rem;
+    vertical-align: top
+}
+
+.Interface #uname, .Interface .uname {
+    background-position: 0 -7.4rem
+}
+
+.Interface #password {
+    background-position: 0 -14.4rem
+}
+
+.Interface .login-entry {
+    position: relative;
+    z-index: 3;
+}
+
+.Interface .login-entry .btn {
+    border: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    background: #fff;
+    display: block;
+    width: 100%;
+    padding: 0;
+}
+
+.Interface .login-entry .btn span {
+    display: block;
+    background: #1c9ae2;
+    margin: auto;
+    margin-bottom: 3rem;
+    margin-top: 1rem;;
+    display: block;
+    border-radius: 0.6rem;
+    height: 4rem;
+    line-height: 4rem;
+    color: #fff;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.Interface .login-entry .login-btn span {
+    margin-bottom: 1rem
+}
+
+.Interface .login-entry .reset-btn span {
+    color: #1c9ae2;
+    background: #fff;
+    border: 1px solid #1c9ae2;
+}
+
+/*footer*/
+.footer {
+    padding: 0 2rem;
+    padding-top: 5rem;
+    padding-bottom: 1rem;
+    margin: auto;
+    margin-top: -40%;;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 2em;
+    position: relative;
+    z-index: 6;
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 30%, rgba(255, 255, 255, 1) 60%);
+    color: #666;
+}
+
+
+

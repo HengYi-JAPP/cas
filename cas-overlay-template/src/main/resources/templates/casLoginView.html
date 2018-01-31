@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title th:text="#{cas.login.pagetitle}">登录-恒逸信息网</title>
+    <link rel="stylesheet" href="./themes/hengyi/images/max.css">
+    <link href="./themes/hengyi/images/slide.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="./themes/hengyi/images/jquery1.42.min.js"></script>
+    <script type="text/javascript" src="./themes/hengyi/images/jquery.easing.1.3.js"></script>
+    <!--****设置IE6下png背景透明****-->
+    <!--[if IE 6]>
+    <script type="text/javascript" src="./themes/hengyi/images/DD_belatedPNG.js"></script>
+    <script type="text/javascript">
+        DD_belatedPNG.fix('*');
+    </script>
+    <![endif]-->
+    <script type="text/javascript" src="./themes/hengyi/images/max.js"></script>
+</head>
+
+<body>
+<div class="external-wrap">
+
+    <div class="header">
+        <div class="logo">
+            <div class="l-img"><img src="./themes/hengyi/images/logo.png" alt=""></div>
+        </div>
+    </div>
+
+    <!-- content -->
+    <div class="login-wrap">
+        <!-- slide -->
+        <div class="prospect-wrap">
+            <div class="prospect">
+            </div>
+            <div id="slide">
+                <!-- slide content -->
+                <div id="focusBar">
+                    <a href="javascript:void(0)" class="arrL" onclick="prePage()">&nbsp;</a>
+                    <a href="javascript:void(0)" class="arrR" onclick="nextPage()">&nbsp;</a>
+                    <ul class="mypng">
+                        <li id="focusIndex1" style=" display:block;"><!--此处需判断li的display:block-->
+                            <div class="focusL"><img src="./themes/hengyi/images/ban1.png"/></div>
+                            <div class="focusR"><img src="./themes/hengyi/images/t1.png"/></div>
+                        </li>
+                        <li id="focusIndex2" style=" display:none;">
+                            <div class="focusL"><img src="./themes/hengyi/images/ban2.png"/></div>
+                            <div class="focusR"><img src="./themes/hengyi/images/t2.png"/></div>
+                        </li>
+                        <li id="focusIndex3" style="display:none;">
+                            <div class="focusL"><img src="./themes/hengyi/images/ban3.png"/></div>
+                            <div class="focusR"><img src="./themes/hengyi/images/t3.png"/></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <script type="text/javascript" src="./themes/hengyi/images/script.js"></script>
+                <!-- slide content end -->
+            </div>
+
+        </div>
+        <!-- slide end -->
+
+        <!-- login -->
+        <div class="l-window">
+            <div class="Interface">
+                <div class="title">
+                    <i></i> 用户登录
+                </div>
+
+                <form method="post" id="fm1" th:object="${credential}" action="login">
+
+                    <p class="frame">
+                        <input th:field="*{username}" class="key action-account-check max-username" tabindex="1" type="text" th:disabled="${guaEnabled}" th:accesskey="#{screen.welcome.label.netid.accesskey}" autocomplete="off"/>
+                        <label th:text="#{screen.welcome.label.netid}">用户名</label>
+                    </p>
+
+                    <p class="frame">
+                        <input th:field="*{password}" class="key max-password" type="password" tabindex="2" th:accesskey="#{screen.welcome.label.password.accesskey}" autocomplete="off"/>
+                        <label th:text="#{screen.welcome.label.password}">密码</label>
+                    </p>
+
+                    <p class="frame chbox" th:if="${#fields.hasErrors('*')}">
+                        <span th:each="err : ${#fields.errors('*')}" th:utext="${err}"/>
+                    </p>
+                    <p class="frame login-entry">
+                        <input type="hidden" name="execution" th:value="${flowExecutionKey}"/>
+                        <input type="hidden" name="_eventId" value="submit"/>
+                        <input type="hidden" name="geolocation"/>
+
+                        <button type="submit" class="btn login-btn">
+                            <span th:text="#{screen.welcome.button.login}">登录</span>
+                        </button>
+                    </p>
+                </form>
+            </div>
+        </div>
+        <!-- login end -->
+    </div>
+
+    <!-- copyright -->
+    <div class="footer">
+        <div class="copyright">
+            <div class="text">
+                2012-2017 @浙江恒逸集团有限公司 版权所有 浙江省杭州市萧山区市心北路260号恒逸南岸明珠 <br/>
+                <span>Tel: (0086) 0571-82795888	</span> <span>Fax: (0086) 0571-82797666 </span>
+            </div>
+            <div class="pir">
+                <img src="./themes/hengyi/images/i1.png" alt="">
+                <img src="./themes/hengyi/images/i2.png" alt="">
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
