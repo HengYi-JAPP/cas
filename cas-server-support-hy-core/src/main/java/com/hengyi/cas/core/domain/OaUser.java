@@ -7,6 +7,7 @@ import org.springframework.ldap.odm.annotations.Entry;
 import org.springframework.ldap.odm.annotations.Id;
 
 import javax.naming.Name;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 描述： 对应 AD 中的 OA 员工，无员工号或用 oaId 在进行登录
@@ -21,8 +22,8 @@ public class OaUser {
     private String oaId;
     @Attribute(name = "employeeid")
     private String hrId;
-    @Attribute(name = "userpassword")
-    private String userpassword;
+    @Attribute(name = "userPassword")
+    private byte[] userPassword;
     @Attribute(name = "displayName")
     private String displayName;
     @Attribute(name = "company")
@@ -32,7 +33,8 @@ public class OaUser {
 
     public boolean checkPassword(final String originalPassword) {
         String md5Pass = DigestUtils.md5Hex(originalPassword);
-        return StringUtils.equalsIgnoreCase(md5Pass, userpassword);
+        String s = new String(userPassword, StandardCharsets.UTF_8);
+        return StringUtils.equalsIgnoreCase(md5Pass, s);
     }
 
     public Name getId() {
@@ -83,11 +85,11 @@ public class OaUser {
         this.oaId = oaId;
     }
 
-    public String getUserpassword() {
-        return userpassword;
+    public byte[] getUserPassword() {
+        return userPassword;
     }
 
-    public void setUserpassword(String userpassword) {
-        this.userpassword = userpassword;
+    public void setUserPassword(byte[] userPassword) {
+        this.userPassword = userPassword;
     }
 }
