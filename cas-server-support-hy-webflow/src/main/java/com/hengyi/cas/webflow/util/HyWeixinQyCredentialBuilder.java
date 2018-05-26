@@ -18,9 +18,9 @@ import java.util.stream.Stream;
  * @author jzb 2018-01-31
  */
 public class HyWeixinQyCredentialBuilder implements HyWebflowCredentialBuilder {
-    private static final Logger log = LoggerFactory.getLogger(HyWeixinYtCredentialBuilder.class);
-    private static String URL_TPL_ACCESSTOKEN = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=${corpid}&corpsecret=${corpsecret}";
-    private static String URL_TPL_GETUSERINFO = "https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token=${access_token}&code=${code}";
+    private static final Logger log = LoggerFactory.getLogger(HyWeixinQyCredentialBuilder.class);
+    public static String URL_TPL_ACCESSTOKEN = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=${corpid}&corpsecret=${corpsecret}";
+    public static String URL_TPL_GETUSERINFO = "https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token=${access_token}&code=${code}";
     private final String corpid;
     private final String corpsecret;
 
@@ -64,7 +64,9 @@ public class HyWeixinQyCredentialBuilder implements HyWebflowCredentialBuilder {
     private void checkError(JsonNode res) {
         JsonNode errcode = res.get("errcode");
         if (errcode != null && errcode.asInt() > 0) {
-            throw new RuntimeException();
+            System.out.println(res);
+            log.error(res.toString());
+            throw new RuntimeException(res.toString());
         }
     }
 }

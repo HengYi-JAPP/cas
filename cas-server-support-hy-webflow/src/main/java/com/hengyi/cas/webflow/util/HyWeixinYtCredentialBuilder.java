@@ -51,6 +51,7 @@ public class HyWeixinYtCredentialBuilder implements HyWebflowCredentialBuilder {
         final JsonNode res = HyUtils.okGetToJson(url);
         JsonNode errcode = res.get("ErrCode");
         if (errcode.asInt() != 0) {
+            System.out.println(res);
             throw new RuntimeException();
         }
     }

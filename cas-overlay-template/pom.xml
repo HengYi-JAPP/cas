@@ -9,19 +9,20 @@
     <version>${cas.version}</version>
 
     <properties>
-        <cas.version>5.2.2</cas.version>
-        <springboot.version>1.5.8.RELEASE</springboot.version>
+        <cas.version>5.2.4</cas.version>
+        <springboot.version>1.5.12.RELEASE</springboot.version>
         <!-- app.server could be -jetty, -undertow, -tomcat, or blank if you plan to provide appserver -->
-        <app.server>-tomcat</app.server>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <app.server>-undertow</app.server>
 
         <mainClassName>org.springframework.boot.loader.WarLauncher</mainClassName>
         <isExecutable>false</isExecutable>
         <manifestFileToUse>
             ${project.build.directory}/war/work/org.apereo.cas/cas-server-webapp${app.server}/META-INF/MANIFEST.MF
         </manifestFileToUse>
+
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencyManagement>
@@ -52,6 +53,16 @@
             <artifactId>cas-server-support-json-service-registry</artifactId>
             <version>${cas.version}</version>
         </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.apereo.cas</groupId>-->
+        <!--<artifactId>cas-server-support-ehcache-ticket-registry</artifactId>-->
+        <!--<version>${cas.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.apereo.cas</groupId>-->
+        <!--<artifactId>cas-server-support-ehcache-monitor</artifactId>-->
+        <!--<version>${cas.version}</version>-->
+        <!--</dependency>-->
         <!--<dependency>-->
         <!--<groupId>org.apereo.cas</groupId>-->
         <!--<artifactId>cas-server-documentation-swagger</artifactId>-->
@@ -120,7 +131,6 @@
                             <artifactId>cas-server-webapp${app.server}</artifactId>
                             <excludes>
                                 <exclude>WEB-INF/classes/services/*.*</exclude>
-                                <exclude>WEB-INF/classes/user-details.properties</exclude>
                                 <exclude>WEB-INF/classes/application.properties</exclude>
                                 <exclude>WEB-INF/classes/application.yml</exclude>
                             </excludes>
@@ -130,27 +140,8 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
             </plugin>
         </plugins>
     </build>
@@ -187,6 +178,25 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+            <id>default</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.apereo.cas</groupId>
+                    <artifactId>cas-server-webapp${app.server}</artifactId>
+                    <version>${cas.version}</version>
+                    <type>war</type>
+                    <scope>runtime</scope>
+                </dependency>
+                <!--
+                ...Additional dependencies may be placed here...
+                -->
+            </dependencies>
+        </profile>
+
+        <profile>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
             <id>exec</id>
             <properties>
                 <mainClassName>org.apereo.cas.web.CasWebApplication</mainClassName>
@@ -221,6 +231,26 @@
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
+            <id>bootiful</id>
+            <properties>
+                <app.server>-tomcat</app.server>
+                <isExecutable>false</isExecutable>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.apereo.cas</groupId>
+                    <artifactId>cas-server-webapp${app.server}</artifactId>
+                    <version>${cas.version}</version>
+                    <type>war</type>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+
+        <profile>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
             <id>pgp</id>
             <build>
                 <plugins>
@@ -247,4 +277,5 @@
             </build>
         </profile>
     </profiles>
+
 </project>

@@ -66,7 +66,7 @@ public class HyLdapConfiguration extends LdapAuthenticationConfiguration {
     }
 
     /**
-     * 注意 Bean name，需要和 {@link LdapAuthenticationConfiguration} 中的一致
+     * 注意 Bean name，需要和 {@link LdapAuthenticationConfiguration#ldapAuthenticationEventExecutionPlanConfigurer} 中的一致
      * 这样可以覆盖，用自己的方式生成，并设置 principalNameTransformer
      *
      * @return

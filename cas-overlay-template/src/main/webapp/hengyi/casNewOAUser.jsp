@@ -24,7 +24,7 @@
 
             String result = "0";
             try {
-                Socket socket = new Socket("192.168.0.133", new Integer(8722).intValue());
+                Socket socket = new Socket("127.0.0.1", new Integer(8722).intValue());
                 PrintWriter pwr = new PrintWriter(socket.getOutputStream());
                 InputStreamReader in = new InputStreamReader(socket.getInputStream());
                 BufferedReader read = new BufferedReader(in);
