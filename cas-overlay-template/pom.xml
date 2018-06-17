@@ -9,7 +9,7 @@
     <version>${cas.version}</version>
 
     <properties>
-        <cas.version>5.2.4</cas.version>
+        <cas.version>5.2.5</cas.version>
         <springboot.version>1.5.12.RELEASE</springboot.version>
         <!-- app.server could be -jetty, -undertow, -tomcat, or blank if you plan to provide appserver -->
         <app.server>-undertow</app.server>

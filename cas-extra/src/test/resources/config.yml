@@ -1,0 +1,9 @@
+http:
+  port: 9999
+
+pac4j:
+  baseUrl: 'http://localhost'
+
+ad:
+  address: 192.168.0.133
+  port: 8722
