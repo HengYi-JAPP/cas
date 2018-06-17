@@ -7,9 +7,7 @@ import java.net.Socket;
 import java.util.HashMap;
 
 public final class User {
-    //        String address = "127.0.0.1";
     static String address = "192.168.0.133";
-
 
     public static boolean login(String username, String password) {
         String result = checkuser(username, password);

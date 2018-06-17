@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'application'
+    id "com.palantir.docker" version "0.19.2"
+    id 'com.github.johnrengelman.shadow' version '2.0.4'
+}
+
+group 'com.hengyi.japp'
+version '1.0'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+mainClassName = "io.vertx.core.Launcher"
+shadowJar {
+    archiveName "${project.name}.jar"
+    manifest {
+        attributes 'Main-Verticle': 'com.hengyi.japp.cas.server.MainVerticle'
+    }
+    mergeServiceFiles {
+        include 'META-INF/services/io.vertx.core.spi.VerticleFactory'
+    }
+}
+
+dependencies {
+    compile "io.vertx:vertx-web:${vertxVersion}",
+            "io.vertx:vertx-rx-java2:${vertxVersion}",
+            "io.vertx:vertx-web-templ-handlebars:${vertxVersion}",
+            "org.pac4j:vertx-pac4j:3.1.0",
+//            "org.pac4j:pac4j-cas:3.0.0",
+            "org.pac4j:pac4j-cas:2.3.1",
+            "ch.qos.logback:logback-classic:1.2.3"
+
+    compileOnly "io.vertx:vertx-codegen:${vertxVersion}",
+            "org.projectlombok:lombok:1.18.0"
+
+    testCompile 'junit:junit:4.12',
+            "io.vertx:vertx-config:${vertxVersion}",
+            "io.vertx:vertx-config-yaml:${vertxVersion}",
+            "io.vertx:vertx-codegen:${vertxVersion}"
+}
