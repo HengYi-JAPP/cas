@@ -32,7 +32,7 @@ import java.util.regex.Pattern;
 @Singleton
 public class Pac4jConfigFactory implements ConfigFactory {
     private final String CALLBACK_PATH = "/callback";
-    private final Pattern anonymousPattern = Pattern.compile(".*\\.(css|js|ico|json)", Pattern.CASE_INSENSITIVE);
+    private final Pattern anonymousPattern = Pattern.compile(".*\\.(css|js|ico|json)$", Pattern.CASE_INSENSITIVE);
     private final Vertx vertx;
     private final Pac4jAuthProvider pac4jAuthProvider = new Pac4jAuthProvider();
     private final AuthProvider authProvider = new AuthProvider(pac4jAuthProvider);
@@ -75,8 +75,11 @@ public class Pac4jConfigFactory implements ConfigFactory {
         config.setHttpActionAdapter(httpActionAdapter);
         config.setSessionStore(vertxSessionStore);
         config.addMatcher("CasClient", webContext -> {
+            final String requestMethod = webContext.getRequestMethod();
             final String path = webContext.getPath();
-            return !anonymousPattern.matcher(path).matches();
+            final boolean anonymousStatic = "GET".equalsIgnoreCase(requestMethod)
+                    && anonymousPattern.matcher(path).matches();
+            return !anonymousStatic;
         });
         return config;
     }

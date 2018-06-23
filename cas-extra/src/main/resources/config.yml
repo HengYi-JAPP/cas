@@ -1,4 +1,4 @@
 http:
   port: 9999
 pac4j:
-  baseUrl: 'http://cas.hengyi.com:9999'
+  baseUrl: 'http://cas.hengyi.com'
